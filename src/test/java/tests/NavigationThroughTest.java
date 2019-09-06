@@ -22,7 +22,7 @@ public class NavigationThroughTest {
     public void navigationThroughMenu() {
         YotecMainPage yotec = new YotecMainPage(driver);
         yotec.wabashMenu(7);
-//        yotec.innovationMenu(3);
+        yotec.innovationMenu(3);
 
     }
 

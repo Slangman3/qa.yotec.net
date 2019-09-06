@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
 import java.util.List;
 
 public class YotecMainPage {
@@ -29,6 +31,10 @@ public class YotecMainPage {
         List<WebElement> wabashList = driver.findElements(By.xpath("//*[@id='ContentPlaceHolderMenu_TB28884E1021_ctl00_ctl00_ctl00_ctl00_childNodesContainer']/li/a"));
         WebElement checkWabash = wabashList.get(index);
         checkWabash.click();
+        wait.until(ExpectedConditions.textToBe(By.xpath("//*[@id='ContentPlaceHolderContent_TADBF704B017_Col00']//*[contains(text(),'Future-focused Leadership')]"), "Future-focused Leadership"));
+        String wabashUrl = driver.getCurrentUrl();
+        Assert.assertEquals(wabashUrl,"http://qa.yotec.net/we-are-wabash/support");
+        driver.navigate().back();
     }
 
     public void innovationMenu(int index) {
@@ -39,6 +45,9 @@ public class YotecMainPage {
         List<WebElement> traditionList = driver.findElements(By.xpath("//*[@id='ContentPlaceHolderMenu_TB28884E1021_ctl00_ctl00_ctl00_ctl01_childNodesContainer']/li/a"));
         WebElement checkTradition = traditionList.get(index);
         checkTradition.click();
+        String traditionURL = driver.getCurrentUrl();
+        Assert.assertEquals(traditionURL,"http://qa.yotec.net/tradition-of-innovation/future-focus");
+        driver.navigate().back();
     }
 
 }
