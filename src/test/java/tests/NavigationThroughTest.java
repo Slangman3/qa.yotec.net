@@ -21,22 +21,15 @@ public class NavigationThroughTest {
     }
 
     @Test
-    public void navigationThroughMenu() {
+    public void navigationThroughMenuTest() {
         YotecMainPage yotec = new YotecMainPage(driver);
-        yotec.wabashMenu(7);
-        yotec.innovationMenu(3);
-        yotec.ourProductsMenu();
-        yotec.ourBrandsMenu(6);
-        yotec.workWithWabashMenu(0);
-        yotec.timeLineMenu();
-        yotec.locationSearchMenu(2);
-//        yotec.openPage
-//                .selectMenuItem("MenuItem Nmae")
-//                .checkThatCOntainsItems("Submenu 1", "submenu 2")
+        yotec.openPage()
+                .selectMenuItem("We Are Wabash")
+                .goToSubMenuPageWithVerifyBreadCrumbsAndURL("We Are Wabash", "Our Heritage", "http://qa.yotec.net/we-are-wabash/our-heritage");
     }
 
     @Test
-    public void dealerSearchTruckOnTest() {
+    public void dealerSearchWithCheckBoxOnTest() {
         DealerMainPage dealerSearchInputPage = new DealerMainPage(driver);
         dealerSearchInputPage.openPage()
                 .enterSearchCriteria("Truck")
