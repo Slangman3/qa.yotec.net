@@ -5,6 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.DealerMainPage;
+import pages.HowCanWeHelpPage;
 import pages.YotecMainPage;
 
 import java.util.concurrent.TimeUnit;
@@ -47,6 +48,16 @@ public class NavigationThroughTest {
                 .selectTypeOfLocation("Warranty")
                 .waitUntilLoadResultList()
                 .validateAfterCheckBoxing("48 results near Indiana", 48);
+    }
+
+    @Test(priority = 4)
+    public void submitedFormOnTest() {
+        HowCanWeHelpPage helpPage = new HowCanWeHelpPage(driver);
+        helpPage.openPage()
+                .chooseChoice(3)
+                .chooseLocation(256)
+                .completeData("Boris", "VTB", "blabla@dobri.ru", "20200303", "Hello World!")
+                .succesfulySubmited();
     }
 
     @AfterClass

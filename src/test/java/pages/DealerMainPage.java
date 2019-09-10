@@ -12,8 +12,6 @@ public class DealerMainPage {
     WebDriver driver;
     WebDriverWait wait;
     By searchInput = By.xpath("//*[@placeholder='Search Term']");
-    By locationInput = By.xpath("//*[@placeholder='State, city, street, zip code, etc']");
-    By brandCheckBox = By.xpath("//*[@id='ctl00_ContentPlaceHolderContent_C001_RadCheckBoxList1']//*[@type='button']");
     By resultsList = By.xpath("//*[@id='w__dealer_list']//*[@class='w__dealer_item']");
     By listLoader = By.xpath("//*[contains(@class,'loading_panel')]");
 
