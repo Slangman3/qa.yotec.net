@@ -5,6 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.DealerMainPage;
+import pages.HowCanWeHelpPage;
 import pages.YotecMainPage;
 
 import java.util.concurrent.TimeUnit;
@@ -20,7 +21,7 @@ public class NavigationThroughTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Test
+    @Test(priority = 1)
     public void navigationThroughMenuTest() {
         YotecMainPage yotec = new YotecMainPage(driver);
         yotec.openPage()
@@ -28,7 +29,7 @@ public class NavigationThroughTest {
                 .goToSubMenuPageWithVerifyBreadCrumbsAndURL("We Are Wabash", "Our Heritage", "http://qa.yotec.net/we-are-wabash/our-heritage");
     }
 
-    @Test
+    @Test(priority = 2)
     public void dealerSearchWithCheckBoxOnTest() {
         DealerMainPage dealerSearchInputPage = new DealerMainPage(driver);
         dealerSearchInputPage.openPage()
@@ -40,13 +41,23 @@ public class NavigationThroughTest {
                 .validateAfterCheckBoxing("31 results near Indiana", 31);
     }
 
-    @Test
+    @Test(priority = 3)
     public void locationTypeOnTest() {
         DealerMainPage dealerCheckBoxPage = new DealerMainPage(driver);
         dealerCheckBoxPage.openPage()
                 .selectTypeOfLocation("Warranty")
                 .waitUntilLoadResultList()
                 .validateAfterCheckBoxing("48 results near Indiana", 48);
+    }
+
+    @Test(priority = 4)
+    public void submitedFormOnTest() {
+        HowCanWeHelpPage helpPage = new HowCanWeHelpPage(driver);
+        helpPage.openPage()
+                .chooseChoice(3)
+                .chooseLocation(256)
+                .completeData("Boris", "VTB", "blabla@dobri.ru", "20200303", "Hello World!")
+                .succesfulySubmited();
     }
 
     @AfterClass
