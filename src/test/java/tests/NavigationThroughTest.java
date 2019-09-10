@@ -20,7 +20,7 @@ public class NavigationThroughTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Test
+    @Test(priority = 1)
     public void navigationThroughMenuTest() {
         YotecMainPage yotec = new YotecMainPage(driver);
         yotec.openPage()
@@ -28,7 +28,7 @@ public class NavigationThroughTest {
                 .goToSubMenuPageWithVerifyBreadCrumbsAndURL("We Are Wabash", "Our Heritage", "http://qa.yotec.net/we-are-wabash/our-heritage");
     }
 
-    @Test
+    @Test(priority = 2)
     public void dealerSearchWithCheckBoxOnTest() {
         DealerMainPage dealerSearchInputPage = new DealerMainPage(driver);
         dealerSearchInputPage.openPage()
@@ -40,7 +40,7 @@ public class NavigationThroughTest {
                 .validateAfterCheckBoxing("31 results near Indiana", 31);
     }
 
-    @Test
+    @Test(priority = 3)
     public void locationTypeOnTest() {
         DealerMainPage dealerCheckBoxPage = new DealerMainPage(driver);
         dealerCheckBoxPage.openPage()
